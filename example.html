@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Space_game</title>
+
+</head>
+<body style="background-color: black">
+<script src = "Managers/mapManager.js"></script>
+<script src ="Managers/gameManager.js"></script>
+<script src = "Managers/spriteManager.js"></script>
+<script src = "Managers/eventManager.js"></script>
+<script src = "Managers/physicsManager.js"></script>
+<script src = "Managers/objectManager.js"></script>
+<script src = "Managers/soundManager.js"></script>
+<script src = "start.js"></script>
+<script src = "Managers/levelManager.js"></script>
+<div style = "margin-left: 32%;color:white; font-size: 20px" id = "selector">
+    Enter your nickname
+    <input id ="nickname" type="text">
+    <button onclick="confirmInput()"> apply </button>
+</div>
+<div id ="deadScreen" style=" text-align: center; margin-top: 5%; width:672px; margin-left: 25%;
+     border: 1px solid black; color:white;height: 372px; background-image: url('pics/You_lose.png'); display: none">
+     <button onclick ="restart()">Try again</button>
+</div>
+<div id ="success" style=" text-align: center; margin-top: 5%; width:672px; margin-left: 25%;
+ border: 1px solid black; color:white;height: 372px; background-image: url('pics/You_win.png'); display: none" >
+</div>
+
+<canvas id="canvasid"  width="480" height="650" style="display:none; margin-left: 32%; border:1px solid black;"></canvas>
+<script>
+    let canvas = document.getElementById("canvasid");
+    let ctx = canvas.getContext("2d");
+    canvas.backgroundColor = "black";
+    let lm = new levelManager();
+    let mm = new mapManager();
+    let gm = new gameManager();
+    let sm = new spriteManager();
+    let em = new eventManager();
+    let pm = new physicsManager();
+    let sM = new soundManager();
+
+    gm.factory['Player'] = Player;
+    gm.factory['Enemies'] = Enemies;
+    gm.factory['Bubble'] = Bubble;
+    gm.factory['Asteroids'] = Asteroids;
+    sM.loadArray([
+        'sounds/mix3.mp3',//взрыв меня
+        'sounds/miss1.mp3',//выстрел мой
+        'sounds/miss2.mp3',//выстрел врага
+        'sounds/boomer5.mp3',//собрали поле
+    ]);
+    sM.init();
+    sm.loadAtlas("obj.json", "./objects/obj.png");
+    em.setup(canvas);
+    gm.loadAll(1);
+</script>
+</body>
+</html>
+
