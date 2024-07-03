@@ -13,20 +13,24 @@
 <script src = "scripts/soundManager.js"></script>
 <script src = "scripts/start.js"></script>
 <script src = "scripts/levelManager.js"></script>
-<div style = "margin-left: 32%;color:white; font-size: 20px" id = "selector">
+<div style = "align-items: center; justify-content: center; display: flex; flex-direction: row; flex-wrap: wrap;">
+<div style = "color:white; font-size: 20px; margin-top: 5%;" id = "selector">
     Enter your nickname
     <input id ="nickname" type="text">
     <button onclick="confirmInput()"> apply </button>
 </div>
-<div id ="deadScreen" style=" text-align: center; margin-top: 5%; width:672px; margin-left: 25%;
-     border: 1px solid black; color:white;height: 372px; background-image: url('pics/You_lose.png'); display: none">
+<div id ="deadScreen" style="border: 1px solid black; color:white; width: 672px; height: 372px;
+          background-image: url('pics/You_lose.png'); display: none; text-align: center; margin-top: 15%">
      <button onclick ="restart()">Try again</button>
 </div>
-<div id ="success" style=" text-align: center; margin-top: 5%; width:672px; margin-left: 25%;
- border: 1px solid black; color:white;height: 372px; background-image: url('pics/You_win.png'); display: none" >
+<div id ="success" style="border: 1px solid black; color:white; width: 672px; height: 372px;
+          background-image: url('pics/You_win.png'); display: none; text-align: center; margin-top: 15%;">
+</div>
+<div>
+<canvas id="canvasid"  width="480" height="650" style="display:none; border:1px solid white; margin-top: 5%;"></canvas>
+</div>
 </div>
 
-<canvas id="canvasid"  width="480" height="650" style="display:none; margin-left: 32%; border:1px solid black;"></canvas>
 <script>
     let canvas = document.getElementById("canvasid");
     let ctx = canvas.getContext("2d");
